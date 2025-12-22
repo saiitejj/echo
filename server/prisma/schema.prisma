@@ -19,4 +19,17 @@ model User {
  name String?
  createdAt DateTime
 
+ posts Post[]
+
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+  title String
+  content String
+  published Boolean @default(false)
+  createdAt DateTime
+
+  authorId Int
+  author User @relation(fields: [authorId],references: [id])
 }
