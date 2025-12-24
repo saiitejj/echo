@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors"
 import dotenv from "dotenv"
 import userRoute from "./routes/userRoute"
-
+import postRoute from "./routes/postRoute"
 
 dotenv.config()
 
@@ -17,6 +17,7 @@ app.use(cors({
 }))
 app.use(express.json())
 app.use("/api/users",userRoute)
+app.use("/api/posts",postRoute)
 
 app.get('/',(req,res)=>{
     res.send('Echo Backend is Running!!!')
