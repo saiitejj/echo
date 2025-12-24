@@ -1,7 +1,7 @@
 import { Router,Request,Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs"
-
+import jwt  from "jsonwebtoken";
 const router=Router()
 const prisma=new PrismaClient()
 
@@ -77,8 +77,16 @@ router.post('/login',async(req:Request,res:Response):Promise<any>=>{
         if(!Match){
             return res.status(400).json({error:"Invalid Email or Password"})
         }
+
+        const token=jwt.sign(
+            {id:existingUser.id,email:existingUser.email},
+            process.env.JWT_SECRET as string,
+            {expiresIn:"1h"}
+        )
+
         return res.status(200).json({
                 message:"User Login successfully",
+                token,
                 user:{
                     id:existingUser.id,
                     email:existingUser.email,
