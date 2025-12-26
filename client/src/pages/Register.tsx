@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import AuthForm from "../components/AuthForm";
 import axios from "axios";
+import { BACKEND_URL } from "../config";
 
 interface SignupInput {
     name?: string; 
@@ -11,7 +12,7 @@ export default function Register(){
     const navigate=useNavigate()
     const handleRegister=async(data:SignupInput)=>{
         try{
-            await axios.post(`http://localhost:5000/api/users/register`,data)
+            await axios.post(`${BACKEND_URL}/api/users/register`,data)
             alert("Registration Successful!")
             navigate("/login")
         }catch(error){
