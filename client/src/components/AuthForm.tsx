@@ -61,7 +61,7 @@ export default function AuthForm({type,onSubmit}:AuthFormProps){
                     </div>
                     <button
                         onClick={()=>onSubmit(postInputs)}
-                        className="w-full bg-black text-white p-2.5 rounded-lg hover:bg-gray-800 font-bold transition-colors"
+                        className="w-full bg-black text-white p-2.5 rounded-lg hover:bg-gray-800 font-bold transition-colors cursor-pointer"
                         >
                             {type==="register"?"Sign Up":"Login"}
 

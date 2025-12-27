@@ -10,12 +10,12 @@ export const Appbar=()=>{
                     alt="Echo Logo"
                     className="w-12 h-10 cursor-pointer" />
             </Link>
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-4xl text-[#1C4D8D]">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-xl md:text-4xl pointer-events-none text-[#1C4D8D]">
                     Echo
             </div>
             <div className="flex items-center">
                 <Link to={`/publish`}>
-                    <button type="button" className="mr-8 bg-[#37353E] text-white cursor-pointer transition-colors hover:bg-[#37353E]/50 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-4 py-2.5 text-center">
+                    <button type="button" className="mr-4 md:mr-8 bg-[#37353E] text-white cursor-pointer transition-colors hover:bg-[#37353E]/50 transition-all focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-3 py-1.5 md:px-5 md:py-2.5 text-center">
                         New
                     </button>
                 </Link>
