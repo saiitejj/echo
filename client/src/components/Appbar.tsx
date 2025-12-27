@@ -2,6 +2,7 @@ import { Avatar } from "./BlogCard";
 import { Link } from "react-router-dom";
 
 export const Appbar=()=>{
+    const authorName=localStorage.getItem("authorName")||"Anonymous"
     return (
         <div className="relative border-b flex justify-between px-10 py-4">
             <Link to={`/`} >
@@ -19,7 +20,7 @@ export const Appbar=()=>{
                     </button>
                 </Link>
                 <Link to={'/profile'}>
-                    <Avatar size={"big"} name="Sai" />
+                    <Avatar size={"big"} name={authorName} />
                 </Link>
             </div>
 

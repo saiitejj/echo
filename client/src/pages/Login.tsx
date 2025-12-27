@@ -11,8 +11,12 @@ export default function Login(){
     const handleLogin=async(data:SignInput)=>{
         try{
             const response=await axios.post(`${BACKEND_URL}/api/users/login`,data)
-            const token=response.data.token;
-            localStorage.setItem("token",token)
+            const jwt=response.data.token;
+            localStorage.setItem("token",jwt)
+            localStorage.setItem("authorName",response.data.user.name || "Anonymous")
+            localStorage.setItem("authorEmail",response.data.user.email || "No Email")
+            localStorage.setItem("userId",response.data.user.id)
+
             alert("Login Successful!")
             navigate("/")
         }catch(error){
