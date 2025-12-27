@@ -10,7 +10,7 @@ export const Appbar=()=>{
                     alt="Echo Logo"
                     className="w-12 h-10 cursor-pointer" />
             </Link>
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-xl">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-4xl text-[#1C4D8D]">
                     Echo
             </div>
             <div className="flex items-center">
