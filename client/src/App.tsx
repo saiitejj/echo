@@ -5,7 +5,7 @@ import Blogs  from "./pages/Blogs"
 import { Blog } from "./pages/Blog"
 import { Profile } from "./pages/Profile"
 import { ProtectedRoute } from "./components/ProtectedRoute"
-
+import { Publish } from "./pages/Publish"
 function App() {
 
   return (
@@ -13,6 +13,7 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<ProtectedRoute><Blogs />  </ProtectedRoute>} />
+      <Route path="/publish" element={<ProtectedRoute><Publish />  </ProtectedRoute>} />
       <Route path="/profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute>} />
       <Route path={`/blog/:id`} element={<ProtectedRoute> <Blog /> </ProtectedRoute>} />
       
