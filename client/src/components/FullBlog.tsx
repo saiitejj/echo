@@ -1,8 +1,13 @@
 import { Appbar } from "./Appbar";
 import { type Blog } from "../hooks";
 import { Avatar } from "./BlogCard";
-
-export const FullBlog=({blog}:{blog:Blog})=>{
+interface FullBlogProps {
+    blog: Blog;
+    onDelete: () => void; 
+    onEdit: () => void;
+}
+export const FullBlog=({blog,onDelete,onEdit}:FullBlogProps)=>{
+    const currentUserId=localStorage.getItem("userId")
     return <div>
         <Appbar />
         <div className="flex justify-center">
@@ -17,7 +22,26 @@ export const FullBlog=({blog}:{blog:Blog})=>{
                     <div className="pt-4">
                         {blog.content}
                     </div>
+                    {currentUserId===String(blog.authorId )&&
+                    
+                        <div className="mt-12 flex gap-4 border-t pt-6">
+                            <button 
+                                onClick={onEdit}
+                                className="text-gray-600 hover:text-black transition-colors font-medium cursor-pointer"
+                            >
+                                Edit Echo
+                            </button>
+                            <button 
+                                onClick={onDelete}
+                                className="text-red-600 hover:text-red-800 transition-colors font-medium cursor-pointer"
+                            >
+                                Delete
+                            </button>
+
+                        </div>
+                    }
                 </div>
+
                 <div className="col-span-4 flex flex-col">
                         <div className="text-slate-600 text-lg font-medium mb-4">
                             Author

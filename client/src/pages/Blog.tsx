@@ -4,11 +4,33 @@ import { Appbar } from "../components/Appbar";
 import { useBlog } from "../hooks";
 import { useParams } from "react-router-dom";
 import { BlogSkeleton } from "../components/BlogSkeleton";
+import { BACKEND_URL } from "../config";
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 export const Blog=()=>{
     const {id}=useParams()
     const {loading,blog}=useBlog({
         id:id || ""
     })
+    const navigate=useNavigate()
+    const onDelete = async () => {
+        const confirmation = globalThis.confirm("Are you sure you want to delete this Echo?");
+        if (!confirmation) return;
+
+        try {
+            await axios.delete(`${BACKEND_URL}/api/v1/blog/${id}`, {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token")
+                }
+            });
+            alert("Echo deleted successfully");
+            navigate("/blogs");
+        } catch (error) {
+            console.error(error)
+            alert("Error while deleting post");
+        }
+    };
     if (loading || !blog){
         return <div>
             <Appbar />
@@ -26,6 +48,9 @@ export const Blog=()=>{
         </div>
     }
     return <div>
-        <FullBlog blog={blog}/>
+        <FullBlog blog={blog}
+            onDelete={onDelete}
+            onEdit={()=>navigate(`/publish?edit=true&id=${blog.id}`)}
+        />
     </div>
 }
